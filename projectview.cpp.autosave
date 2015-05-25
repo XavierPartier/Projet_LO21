@@ -31,6 +31,6 @@ projectView::projectView(QWidget *parent){
 void projectView::declareTaches(int nbtaches){
 
     for(int i = 0; i< nbtaches; i++){
-
+        tache
     }
 }

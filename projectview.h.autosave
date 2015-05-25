@@ -19,6 +19,7 @@ private:
     QLineEdit *titreProjet;
     QLineEdit *auteur;
     QSpinBox *nbTaches;
+    QLineEdit taches[];
 
 public:
     projectView(QWidget *parent=0);
