@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "tache.h"
 
 #include <iostream>
@@ -21,4 +22,18 @@ int main(int argc, char * argv[]) {
     //tu.afficherTache();
 
     return 0;
+=======
+#include <QApplication>
+#include <calendarview.h>
+#include "mainview.h"
+int main(int argc, char* argv[]) {
+
+    QApplication app(argc, argv);
+    //calendarView* cal = new calendarView();
+    //cal->show();
+
+    mainView* main = new mainView();
+    main->show();
+    return app.exec();
+>>>>>>> b05d34aeb95f3f675ef565b4d9d57ade368416d5
 }
