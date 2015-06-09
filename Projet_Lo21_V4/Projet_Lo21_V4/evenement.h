@@ -30,10 +30,10 @@ private:
     QString description;
     QString lieu;
 
-    ProgrammationActivite(const QDate& d, const QTime& h, const QTime& fin, const QString& t, const QString& desc, const QString& l): Evenement(d, h, fin), titre(t), description(desc), lieu(l){}
     friend class ProgManager;
 public:
-
+    ProgrammationActivite(const QDate& d, const QTime& h, const QTime& fin, const QString& t,
+                          const QString& desc, const QString& l): Evenement(d, h, fin), titre(t), description(desc), lieu(l){}
     QString getDescription() const { return description; }
     QString getLieu() const { return lieu; }
 
@@ -49,7 +49,8 @@ protected:
     const TacheUnitaire* tache;
 
 public:
-    ProgrammationTache(const QDate& d, const QTime& h, const QTime& fin, const TacheUnitaire& t): Evenement(d, h, fin), tache(&t){}
+    ProgrammationTache(const QDate& d, const QTime& h,
+                       const QTime& fin, const TacheUnitaire& t): Evenement(d, h, fin), tache(&t){}
     const TacheUnitaire& getTache() const { return *tache; }
     virtual bool isProgTache() const { return true; }
     QString getTitre() const { return tache->getTitre(); }
@@ -103,6 +104,54 @@ public:
         Iterator getIterator() {
             return Iterator(programmations,nb);
         }
+};
+
+class EvtPj : public ProgrammationActivite {
+
+private:
+    QDate dateFin;
+
+public:
+    EvtPj(const QDate& dd, const QTime& hd, const QTime& hf, const QString& t,
+          const QString& des, const QString& l, const QDate& df): ProgrammationActivite(dd, hd, hf, t, des, l), dateFin(df){}
+    const QDate& getDate() const;
+    const QDate& getDateFin() const { return dateFin; }
+    /*virtual void afficher(std::ostream& f= std::cout) const override {
+        f<<"***** Evt ********"<<"\n"<<"Date debut= "<<dateDebut<<" Date fin= "<<dateFin<<" sujet= "<<getDescription()<<"\n";
+    }*/
+    /*QString toString() const {
+        std::stringstream f;
+        f<<" ***** Evt ***** "
+        <<"\n"<<"Date debut= "<<dateDebut<<" Date fin= "<<dateFin
+        <<" Sujet= "<<getDescription()<<"\n";
+        return f.str(); ]}*/
+
+    ~EvtPj() {}
+    EvtPj* clone() const {return new EvtPj(*this);}
+};
+
+
+class Evt1jDur : public ProgrammationActivite {
+
+private:
+    QTime duree;
+
+public:
+    Evt1jDur(const QDate& dd, const QTime& hd, const QTime& hf, const QString& t, const QString& des,
+          const QString& l, const QTime& dur): ProgrammationActivite(dd, hd, hf, t, des, l), duree(dur) {}
+    const QTime& getDuree() const { return duree; }
+    /*virtual void afficher(std::ostream& f= std::cout) const override {
+    f<<"***** Evt ********"<<"\n"<<"Date="<<date<<" sujet="<<getDescription()<<"\n";
+    }*/
+    /*std::string toString() const {
+        std::stringstream f;
+        f<<" ***** Evt ***** "
+        <<"\n"<<"Date= "<<date
+        <<" Sujet="<<getDescription()<<"\n";
+        return f.str();
+    }*/
+    ~Evt1jDur() {}
+    Evt1jDur* clone() const {return new Evt1jDur(*this);}
 };
 
 #endif // EVENEMENT_H
