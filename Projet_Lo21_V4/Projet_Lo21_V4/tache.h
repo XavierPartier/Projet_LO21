@@ -80,12 +80,15 @@ private:
     std::vector<Tache*> tachesComposantes;
     TacheComposite(const QString& id, const QString& t, const QDate& dispo, const QDate& ech, const std::vector<Tache*> tc):
     Tache(id, t, dispo, ech), tachesComposantes(tc) {}
-
+    TacheComposite(const QString& id, const QString& t, const QDate& dispo, const QDate& ech):
+    Tache(id, t, dispo, ech) {}
 public:
     const std::vector<Tache*> getTachesComposantes() const { return tachesComposantes; }
     void ajoutTacheComposante(Tache* tache);
     void suppTacheComposante(const QString& nom);
     void setTachesComposantes(const std::vector<Tache*> tc);
+    Tache& getTacheComposante(const QString& id);
+    std::vector<Tache*>& getTachesComposantes() { return tachesComposantes; }
     void ajouterInfos(QString& infos) const;
     bool isTacheUnitaire() const { return false; }
     virtual QString afficherTache() ;
@@ -119,6 +122,7 @@ public:
     TacheManager& operator=(const TacheManager& um);
     TacheUnitaire& ajouterTacheUnitaire(const QString& id, const QString& t, const QDate& dispo, const QDate& ech, const Duree& dur, bool preempt=false);
     TacheComposite& ajouterTacheComposite(const QString& identificateur, const QString& titre, const QDate& disponibilite, const QDate& echeance, const std::vector<Tache*> tc);
+    TacheComposite& ajouterTacheComposite(const QString& identificateur, const QString& titre, const QDate& disponibilite, const QDate& echeance);
     void suppTache(const QString& id);
     Tache* getTache(const QString& id) ;
     const Tache& getTache(const QString& id) const;

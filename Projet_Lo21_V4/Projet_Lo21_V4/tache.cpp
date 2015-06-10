@@ -40,9 +40,22 @@ QString TacheComposite::afficherTache() {
     text.append("Id: " + this->getId() + "\n");
     text.append("Titre : " + this->getTitre() + "\n");
     text.append("Taches composantes : ");
-    text.append("Disponibilité : " + this->getDateDisponibilite().toString("dd.MM.yyyy")+ "\n");
+    std::vector<Tache*> vec = this->getTachesComposantes();
+    for(int j=0; j<vec.size(); j++) {
+        text.append(vec[j]->getId());
+        text.append(",");
+    }
+    text.append("\nDisponibilité : " + this->getDateDisponibilite().toString("dd.MM.yyyy")+ "\n");
     text.append("Echeance : " + this->getDateEcheance().toString("dd.MM.yyyy")+ "\n");
     return text;
+}
+
+Tache& TacheComposite::getTacheComposante(const QString& id) {
+    for(std::vector<Tache*>::iterator it = tachesComposantes.begin(); it != tachesComposantes.end(); it++) {
+        if((*it)->getId() == id) {
+            return *(*it);
+        }
+    }
 }
 
 TacheManager::TacheManager():taches(0),nb(0),nbMax(0){}

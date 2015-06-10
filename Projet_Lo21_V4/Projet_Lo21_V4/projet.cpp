@@ -23,7 +23,17 @@ QString Projet::afficherProjet() {
     text.append(this->getTitre() + ";");
     for (i=0; i<taches.size(); i++) {
         text.append(taches[i]->getId() + ";");
-    }
+        /*if(taches[i]->isTacheUnitaire() == false){
+            std::vector<Tache*> vec = dynamic_cast<TacheComposite&>(taches[i])->getTachesComposantes();
+            for(int j=0; j<vec.size(); j++) {
+                text.append(",");
+                text.append(vec[j]->getId());
+            }
+        }
+        else
+            text.append(";");
+*/
+        }
     text.append(this->getDateDispo().toString("dd.MM.yyyy")+ ";");
     text.append(this->getDateEch().toString("dd.MM.yyyy")+ ";");
 

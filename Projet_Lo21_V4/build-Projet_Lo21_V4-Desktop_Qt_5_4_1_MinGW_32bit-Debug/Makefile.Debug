@@ -350,6 +350,7 @@ debug/main.o: ../Projet_Lo21_V4/main.cpp ../Projet_Lo21_V4/tache.h \
 		C:/Qt/5.4/mingw491_32/include/QtCore/qdatastream.h \
 		C:/Qt/5.4/mingw491_32/include/QtCore/qregexp.h \
 		C:/Qt/5.4/mingw491_32/include/QtCore/qstringmatcher.h \
+		../Projet_Lo21_V4/projet.h \
 		C:/Qt/5.4/mingw491_32/include/QtWidgets/QApplication \
 		C:/Qt/5.4/mingw491_32/include/QtWidgets/qapplication.h \
 		C:/Qt/5.4/mingw491_32/include/QtCore/qcoreapplication.h \
