@@ -16,7 +16,7 @@ private:
 };
 
 
-class Tache { //class abstraite
+class Tache { //classe abstraite
 
 friend class TacheManager;
 

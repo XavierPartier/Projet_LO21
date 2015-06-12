@@ -54,7 +54,7 @@ Projet& ProjetManager::ajouterProjet(const QString& t, const QDate& dispo, const
 
 ProjetManager::ProjetManager(){
         projets.reserve(10);
-    };
+    }
 
 void ProjetManager::addItem(Projet *pro) {
     projets.push_back(pro);
@@ -72,7 +72,11 @@ Projet* ProjetManager::trouverProjet(const QString &t) const {
     return 0;
 }
 
-
+ProjetManager::~ProjetManager(){
+    //if (file!="") save(file);
+    projets.clear();
+    file="";
+}
 /*ProjetManager& ProjetManager::getInstance() {
     if (instanceUnique==0)
         instanceUnique= new ProjetManager;

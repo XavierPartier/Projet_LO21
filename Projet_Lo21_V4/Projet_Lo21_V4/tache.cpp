@@ -36,17 +36,16 @@ QString TacheUnitaire::afficherTache() {
 QString TacheComposite::afficherTache() {
 
     QString text;
-    text.append("Tache composite : \n");
-    text.append("Id: " + this->getId() + "\n");
-    text.append("Titre : " + this->getTitre() + "\n");
-    text.append("Taches composantes : ");
+    text.append(this->getId() + ";");
+    text.append(this->getTitre() + ";");
     std::vector<Tache*> vec = this->getTachesComposantes();
     for(int j=0; j<vec.size(); j++) {
         text.append(vec[j]->getId());
         text.append(",");
     }
-    text.append("\nDisponibilité : " + this->getDateDisponibilite().toString("dd.MM.yyyy")+ "\n");
-    text.append("Echeance : " + this->getDateEcheance().toString("dd.MM.yyyy")+ "\n");
+    text.append(";");
+    text.append(this->getDateDisponibilite().toString("dd.MM.yyyy")+ ";");
+    text.append(this->getDateEcheance().toString("dd.MM.yyyy"));
     return text;
 }
 
